@@ -1,0 +1,136 @@
+--THIS FILE IS CORRECT NOW! DON'T DO ANY MODIFICATION! BY LU QIZHEN
+--THE MOST IMPORTANT FILE OF LAB 3!
+--PLEASE FINISH THE REPORT BEFORE WENDNESDAY! IF THERE'S ANY PROBLEMS, ASK ME!
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_signed.all;
+
+use work.input_type.all;
+
+entity fir is
+	generic(word_size:	integer:=16);
+	port(	clk,rst,clear:	in std_logic;
+		data_in:	in std_logic_vector(word_size-1 downto 0);
+		data_out:	out std_logic_vector(word_size-1 downto 0));
+end fir;
+
+architecture structural of fir is
+constant l: integer:=17;
+signal data_mux: input_type;
+signal mux0_mul0, mux1_mul1: std_logic_vector(word_size-1 downto 0);
+signal rom0_mul0, rom1_mul1: std_logic_vector(word_size-1 downto 0);
+signal mul0_reg0, mul1_reg1: std_logic_vector(2*word_size-1 downto 0);
+signal reg0_adder0, reg1_adder0: std_logic_vector(2*word_size-1 downto 0);
+signal adder0_reg2: std_logic_vector(2*word_size-1 downto 0);
+signal reg2_adder1: std_logic_vector(2*word_size-1 downto 0);
+signal adder1_reg3: std_logic_vector(2*word_size-1 downto 0);
+signal reg3_adder1: std_logic_vector(2*word_size-1 downto 0);
+signal final: std_logic_vector(word_size-1 downto 0);
+
+signal inner_clk,outer_clk: std_logic;
+
+--control unit!
+constant nAddr: integer:=5;
+signal cl_mux0,cl_mux1: std_logic_vector(nAddr-1 downto 0);
+signal cl_rom0,cl_rom1: std_logic_vector(nAddr-1 downto 0);
+signal cl_rst_reg,cl_rst_regin: std_logic;
+signal control_signal: std_logic_vector((nAddr-1)+3 downto 0);
+
+component CU1
+	generic(nAddr: integer:=5);
+	port(clk,rst,enable: in std_logic;
+		output: out std_logic_vector((nAddr-1)+3 downto 0));
+end component;
+component CU2
+	generic(nAddr: integer:=5);
+	port(clk,rst,enable: in std_logic;
+		output: out std_logic_vector((nAddr-1)+3 downto 0));
+end component;
+
+component reg16
+	GENERIC(N:	INTEGER:=16);
+	PORT(	D 		:IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+		rst,clear,clk	:IN STD_LOGIC;
+		Q		:OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+END component;
+
+component adder 
+	GENERIC(
+		N : INTEGER := 32);
+	PORT(
+	   	x1 : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+		x2 : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+	   	y : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+END component;
+
+component multiplier
+	GENERIC (
+		N : integer := 16);
+	PORT(
+	   	x1 : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+		x2 : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+	   	y : OUT STD_LOGIC_VECTOR(2*N-1 DOWNTO 0));
+END component;
+
+component multiplexer
+        GENERIC (
+		log_L: integer:=5);
+	PORT(
+		CL: IN STD_LOGIC_VECTOR(log_L-1 DOWNTO 0);
+	   	x : IN input_type;
+	   	y : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+END component;
+
+component rom 
+	generic( data_bits:integer:=16;
+		 addr_bits:integer:=5);
+	port(	 address:in std_logic_vector(addr_bits-1 downto 0);
+		 data_out:out std_logic_vector(data_bits-1 downto 0));
+end component;
+
+begin
+
+--control signal matching
+--in order to test cu1 or cu2, please change the unit here!
+	inner_clk <= clk;
+	u_cu: CU1 port map(clk=>inner_clk,rst=>rst,enable=>'1',output=>control_signal);
+	cl_mux0 <= control_signal(nAddr-1 downto 0);
+	cl_rom0 <= control_signal(nAddr-1 downto 0);
+	cl_mux1 <= control_signal(nAddr-1 downto 0)+1;
+	cl_rom1 <= control_signal(nAddr-1 downto 0)+1;
+	cl_rst_reg <= control_signal(nAddr);
+	cl_rst_regin <= control_signal(nAddr+1);
+	outer_clk <= control_signal(nAddr+2);
+
+	data_mux(0)<= data_in;
+	g_reg_in: for i in l-1 downto 1 generate
+		u_reg_in: reg16 port map(D=>data_mux(i-1),rst=>cl_rst_regin,clear=>clear,clk=>outer_clk,Q=>data_mux(i));
+	end generate g_reg_in;
+
+	u_mux0: multiplexer port map(CL=>cl_mux0,x=>data_mux,y=>mux0_mul0);
+	u_mux1: multiplexer port map(CL=>cl_mux1,x=>data_mux,y=>mux1_mul1);
+
+	u_rom0: rom port map(address=>cl_rom0,data_out=>rom0_mul0);
+	u_rom1: rom port map(address=>cl_rom1,data_out=>rom1_mul1);
+
+	u_mul0: multiplier port map(x1=>mux0_mul0,x2=>rom0_mul0,y=>mul0_reg0);
+	u_mul1: multiplier port map(x1=>mux1_mul1,x2=>rom1_mul1,y=>mul1_reg1);
+
+	u_reg0: reg16 generic map(32) port map(D=>mul0_reg0,rst=>cl_rst_reg,clear=>clear,clk=>inner_clk,Q=>reg0_adder0);
+	u_reg1: reg16 generic map(32) port map(D=>mul1_reg1,rst=>cl_rst_reg,clear=>clear,clk=>inner_clk,Q=>reg1_adder0);
+
+	u_adder0: adder port map(x1=>reg0_adder0,x2=>reg1_adder0,y=>adder0_reg2);
+
+	u_reg2: reg16 generic map(32) port map(D=>adder0_reg2,rst=>cl_rst_reg,clear=>clear,clk=>inner_clk,Q=>reg2_adder1);
+
+	u_adder1: adder port map(x1=>reg2_adder1,x2=>reg3_adder1,y=>adder1_reg3);
+
+	u_reg3: reg16 generic map(32) port map(D=>adder1_reg3,rst=>cl_rst_reg,clear=>clear,clk=>inner_clk,Q=>reg3_adder1);
+	
+	final <= adder1_reg3(28 downto 13);
+	
+	u_reg_final: reg16 port map(D=>final,rst=>rst,clear=>clear,clk=>outer_clk,Q=>data_out);
+
+end structural;

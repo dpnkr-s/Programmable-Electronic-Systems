@@ -1,0 +1,45 @@
+--THIS FILE IS CORRECT NOW! PLEASE DON'T DO ANY MODIFICATION! BY LU QIZHEN
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+library std;
+use std.textio.all;
+
+entity rom_fsm is 
+	generic( data_bits:integer:=8;
+		 addr_bits:integer:=4);
+	port(	 address:in std_logic_vector(addr_bits-1 downto 0);
+		 data_out:out std_logic_vector(data_bits-1 downto 0));
+end rom_fsm;
+
+architecture behavioral of rom_fsm is
+type rom_type is array(2**addr_bits-1 downto 0) of std_logic_vector(data_bits-1 downto 0);
+
+constant rom: rom_type := 
+("01100000",
+"00000000",
+"00000010",
+"00000100",
+"00000110",
+"00001000",
+"00001010",
+"00001100",
+"00001110",
+"00010000",
+"00010010",
+"00010010",
+"10110010",
+"01110010",
+"01110010",
+"01110010"
+);
+
+begin
+	process(address)
+	begin
+		data_out<=rom(2**addr_bits-1-conv_integer(unsigned(address)));
+	end process;
+end behavioral;
