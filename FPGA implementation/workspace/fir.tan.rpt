@@ -1,0 +1,496 @@
+Classic Timing Analyzer report for fir
+Fri Nov 27 10:03:57 2015
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'clk'
+  7. tsu
+  8. tco
+  9. th
+ 10. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                           ;
++------------------------------+-------+---------------+----------------------------------+----------------------------------------+-----------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                                   ; To                                      ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+----------------------------------------+-----------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 4.114 ns                         ; x_in[14]                               ; firslice:\gslices:0:ufirslice|x_int[14] ; --         ; clk      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 8.301 ns                         ; y_out[15]~reg0                         ; y_out[15]                               ; clk        ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; 0.062 ns                         ; x_in[7]                                ; firslice:\gslices:0:ufirslice|x_int[7]  ; --         ; clk      ; 0            ;
+; Clock Setup: 'clk'           ; N/A   ; None          ; 57.05 MHz ( period = 17.530 ns ) ; firslice:\gslices:0:ufirslice|x_int[1] ; y_out[15]~reg0                          ; clk        ; clk      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                                        ;                                         ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+----------------------------------------+-----------------------------------------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EP2C50F672C6       ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clk             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk'                                                                                                                                                                                                                                                   ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------------------+----------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                                    ; To             ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------------------+----------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 57.05 MHz ( period = 17.530 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.330 ns               ;
+; N/A                                     ; 57.50 MHz ( period = 17.391 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.191 ns               ;
+; N/A                                     ; 57.73 MHz ( period = 17.323 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.123 ns               ;
+; N/A                                     ; 57.74 MHz ( period = 17.320 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.120 ns               ;
+; N/A                                     ; 57.97 MHz ( period = 17.249 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.049 ns               ;
+; N/A                                     ; 58.11 MHz ( period = 17.209 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 17.031 ns               ;
+; N/A                                     ; 58.15 MHz ( period = 17.198 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.991 ns               ;
+; N/A                                     ; 58.19 MHz ( period = 17.184 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.984 ns               ;
+; N/A                                     ; 58.44 MHz ( period = 17.113 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.913 ns               ;
+; N/A                                     ; 58.46 MHz ( period = 17.106 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.899 ns               ;
+; N/A                                     ; 58.49 MHz ( period = 17.096 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.896 ns               ;
+; N/A                                     ; 58.52 MHz ( period = 17.088 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.888 ns               ;
+; N/A                                     ; 58.59 MHz ( period = 17.068 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.868 ns               ;
+; N/A                                     ; 58.64 MHz ( period = 17.053 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.875 ns               ;
+; N/A                                     ; 58.68 MHz ( period = 17.042 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.842 ns               ;
+; N/A                                     ; 58.69 MHz ( period = 17.040 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.862 ns               ;
+; N/A                                     ; 58.70 MHz ( period = 17.037 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.829 ns               ;
+; N/A                                     ; 58.70 MHz ( period = 17.035 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.835 ns               ;
+; N/A                                     ; 58.72 MHz ( period = 17.029 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.822 ns               ;
+; N/A                                     ; 58.76 MHz ( period = 17.018 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.840 ns               ;
+; N/A                                     ; 58.93 MHz ( period = 16.969 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.791 ns               ;
+; N/A                                     ; 58.93 MHz ( period = 16.969 ns )                    ; firslice:\gslices:0:ufirslice|x_int[5]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.769 ns               ;
+; N/A                                     ; 58.94 MHz ( period = 16.966 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.759 ns               ;
+; N/A                                     ; 58.96 MHz ( period = 16.961 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.754 ns               ;
+; N/A                                     ; 58.96 MHz ( period = 16.961 ns )                    ; firslice:\gslices:0:ufirslice|x_int[7]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.761 ns               ;
+; N/A                                     ; 58.97 MHz ( period = 16.958 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.751 ns               ;
+; N/A                                     ; 58.97 MHz ( period = 16.957 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.757 ns               ;
+; N/A                                     ; 58.99 MHz ( period = 16.953 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.745 ns               ;
+; N/A                                     ; 59.00 MHz ( period = 16.949 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.749 ns               ;
+; N/A                                     ; 59.04 MHz ( period = 16.937 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.730 ns               ;
+; N/A                                     ; 59.07 MHz ( period = 16.929 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.729 ns               ;
+; N/A                                     ; 59.08 MHz ( period = 16.927 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.719 ns               ;
+; N/A                                     ; 59.10 MHz ( period = 16.920 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.720 ns               ;
+; N/A                                     ; 59.19 MHz ( period = 16.896 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.696 ns               ;
+; N/A                                     ; 59.22 MHz ( period = 16.886 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.686 ns               ;
+; N/A                                     ; 59.23 MHz ( period = 16.884 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.706 ns               ;
+; N/A                                     ; 59.25 MHz ( period = 16.878 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.678 ns               ;
+; N/A                                     ; 59.29 MHz ( period = 16.866 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.659 ns               ;
+; N/A                                     ; 59.32 MHz ( period = 16.858 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.658 ns               ;
+; N/A                                     ; 59.33 MHz ( period = 16.856 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.648 ns               ;
+; N/A                                     ; 59.35 MHz ( period = 16.849 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.671 ns               ;
+; N/A                                     ; 59.36 MHz ( period = 16.845 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.637 ns               ;
+; N/A                                     ; 59.38 MHz ( period = 16.840 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.662 ns               ;
+; N/A                                     ; 59.42 MHz ( period = 16.830 ns )                    ; firslice:\gslices:0:ufirslice|x_int[5]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.630 ns               ;
+; N/A                                     ; 59.44 MHz ( period = 16.825 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.625 ns               ;
+; N/A                                     ; 59.44 MHz ( period = 16.824 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.616 ns               ;
+; N/A                                     ; 59.45 MHz ( period = 16.822 ns )                    ; firslice:\gslices:0:ufirslice|x_int[7]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.622 ns               ;
+; N/A                                     ; 59.47 MHz ( period = 16.815 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.615 ns               ;
+; N/A                                     ; 59.48 MHz ( period = 16.813 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.635 ns               ;
+; N/A                                     ; 59.48 MHz ( period = 16.813 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.635 ns               ;
+; N/A                                     ; 59.50 MHz ( period = 16.807 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.607 ns               ;
+; N/A                                     ; 59.52 MHz ( period = 16.802 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.595 ns               ;
+; N/A                                     ; 59.53 MHz ( period = 16.797 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.590 ns               ;
+; N/A                                     ; 59.55 MHz ( period = 16.792 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.585 ns               ;
+; N/A                                     ; 59.57 MHz ( period = 16.787 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.587 ns               ;
+; N/A                                     ; 59.58 MHz ( period = 16.785 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.577 ns               ;
+; N/A                                     ; 59.60 MHz ( period = 16.778 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.600 ns               ;
+; N/A                                     ; 59.62 MHz ( period = 16.774 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.566 ns               ;
+; N/A                                     ; 59.67 MHz ( period = 16.759 ns )                    ; firslice:\gslices:0:ufirslice|x_int[5]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.559 ns               ;
+; N/A                                     ; 59.69 MHz ( period = 16.754 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.554 ns               ;
+; N/A                                     ; 59.70 MHz ( period = 16.751 ns )                    ; firslice:\gslices:0:ufirslice|x_int[7]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.551 ns               ;
+; N/A                                     ; 59.79 MHz ( period = 16.726 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.519 ns               ;
+; N/A                                     ; 59.79 MHz ( period = 16.725 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.521 ns               ;
+; N/A                                     ; 59.80 MHz ( period = 16.722 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.518 ns               ;
+; N/A                                     ; 59.81 MHz ( period = 16.721 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.514 ns               ;
+; N/A                                     ; 59.83 MHz ( period = 16.714 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.506 ns               ;
+; N/A                                     ; 59.83 MHz ( period = 16.713 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.513 ns               ;
+; N/A                                     ; 59.84 MHz ( period = 16.710 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.503 ns               ;
+; N/A                                     ; 59.87 MHz ( period = 16.703 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.495 ns               ;
+; N/A                                     ; 59.92 MHz ( period = 16.688 ns )                    ; firslice:\gslices:0:ufirslice|x_int[5]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.488 ns               ;
+; N/A                                     ; 59.93 MHz ( period = 16.687 ns )                    ; firslice:\gslices:1:ufirslice|x_int[11] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.479 ns               ;
+; N/A                                     ; 59.95 MHz ( period = 16.680 ns )                    ; firslice:\gslices:0:ufirslice|x_int[7]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.480 ns               ;
+; N/A                                     ; 59.97 MHz ( period = 16.674 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.470 ns               ;
+; N/A                                     ; 59.98 MHz ( period = 16.671 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.493 ns               ;
+; N/A                                     ; 60.01 MHz ( period = 16.665 ns )                    ; firslice:\gslices:0:ufirslice|x_int[8]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.455 ns               ;
+; N/A                                     ; 60.03 MHz ( period = 16.657 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.479 ns               ;
+; N/A                                     ; 60.09 MHz ( period = 16.643 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.435 ns               ;
+; N/A                                     ; 60.16 MHz ( period = 16.622 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.444 ns               ;
+; N/A                                     ; 60.18 MHz ( period = 16.618 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.414 ns               ;
+; N/A                                     ; 60.19 MHz ( period = 16.615 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.411 ns               ;
+; N/A                                     ; 60.24 MHz ( period = 16.600 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.422 ns               ;
+; N/A                                     ; 60.27 MHz ( period = 16.592 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.392 ns               ;
+; N/A                                     ; 60.34 MHz ( period = 16.572 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.364 ns               ;
+; N/A                                     ; 60.35 MHz ( period = 16.570 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.363 ns               ;
+; N/A                                     ; 60.35 MHz ( period = 16.569 ns )                    ; firslice:\gslices:0:ufirslice|x_int[9]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.359 ns               ;
+; N/A                                     ; 60.36 MHz ( period = 16.567 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.363 ns               ;
+; N/A                                     ; 60.37 MHz ( period = 16.565 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.358 ns               ;
+; N/A                                     ; 60.39 MHz ( period = 16.558 ns )                    ; firslice:\gslices:1:ufirslice|x_int[14] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.389 ns               ;
+; N/A                                     ; 60.40 MHz ( period = 16.555 ns )                    ; firslice:\gslices:4:ufirslice|x_int[5]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.350 ns               ;
+; N/A                                     ; 60.43 MHz ( period = 16.547 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.343 ns               ;
+; N/A                                     ; 60.44 MHz ( period = 16.544 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.340 ns               ;
+; N/A                                     ; 60.46 MHz ( period = 16.541 ns )                    ; firslice:\gslices:3:ufirslice|x_int[0]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.337 ns               ;
+; N/A                                     ; 60.46 MHz ( period = 16.540 ns )                    ; firslice:\gslices:1:ufirslice|x_int[13] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.371 ns               ;
+; N/A                                     ; 60.54 MHz ( period = 16.518 ns )                    ; firslice:\gslices:1:ufirslice|x_int[11] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.310 ns               ;
+; N/A                                     ; 60.54 MHz ( period = 16.517 ns )                    ; firslice:\gslices:0:ufirslice|x_int[8]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.307 ns               ;
+; N/A                                     ; 60.62 MHz ( period = 16.496 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.292 ns               ;
+; N/A                                     ; 60.65 MHz ( period = 16.488 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.310 ns               ;
+; N/A                                     ; 60.66 MHz ( period = 16.486 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.286 ns               ;
+; N/A                                     ; 60.66 MHz ( period = 16.486 ns )                    ; firslice:\gslices:0:ufirslice|x_int[11] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.276 ns               ;
+; N/A                                     ; 60.66 MHz ( period = 16.484 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.276 ns               ;
+; N/A                                     ; 60.69 MHz ( period = 16.478 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.278 ns               ;
+; N/A                                     ; 60.69 MHz ( period = 16.477 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.270 ns               ;
+; N/A                                     ; 60.69 MHz ( period = 16.476 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.272 ns               ;
+; N/A                                     ; 60.71 MHz ( period = 16.473 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.269 ns               ;
+; N/A                                     ; 60.72 MHz ( period = 16.468 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.268 ns               ;
+; N/A                                     ; 60.74 MHz ( period = 16.464 ns )                    ; firslice:\gslices:0:ufirslice|x_int[10] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.254 ns               ;
+; N/A                                     ; 60.76 MHz ( period = 16.458 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.258 ns               ;
+; N/A                                     ; 60.80 MHz ( period = 16.447 ns )                    ; firslice:\gslices:1:ufirslice|x_int[11] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.239 ns               ;
+; N/A                                     ; 60.81 MHz ( period = 16.446 ns )                    ; firslice:\gslices:0:ufirslice|x_int[8]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.236 ns               ;
+; N/A                                     ; 60.81 MHz ( period = 16.444 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.266 ns               ;
+; N/A                                     ; 60.85 MHz ( period = 16.434 ns )                    ; firslice:\gslices:3:ufirslice|x_int[0]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.230 ns               ;
+; N/A                                     ; 60.88 MHz ( period = 16.425 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.225 ns               ;
+; N/A                                     ; 60.88 MHz ( period = 16.425 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.221 ns               ;
+; N/A                                     ; 60.93 MHz ( period = 16.412 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.234 ns               ;
+; N/A                                     ; 60.97 MHz ( period = 16.402 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.194 ns               ;
+; N/A                                     ; 60.97 MHz ( period = 16.401 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.194 ns               ;
+; N/A                                     ; 61.02 MHz ( period = 16.389 ns )                    ; firslice:\gslices:1:ufirslice|x_int[14] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.220 ns               ;
+; N/A                                     ; 61.02 MHz ( period = 16.387 ns )                    ; firslice:\gslices:1:ufirslice|x_int[12] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.216 ns               ;
+; N/A                                     ; 61.03 MHz ( period = 16.385 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.185 ns               ;
+; N/A                                     ; 61.03 MHz ( period = 16.385 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.178 ns               ;
+; N/A                                     ; 61.05 MHz ( period = 16.380 ns )                    ; firslice:\gslices:1:ufirslice|x_int[9]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.172 ns               ;
+; N/A                                     ; 61.07 MHz ( period = 16.375 ns )                    ; firslice:\gslices:0:ufirslice|x_int[8]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.165 ns               ;
+; N/A                                     ; 61.07 MHz ( period = 16.374 ns )                    ; firslice:\gslices:4:ufirslice|x_int[5]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.169 ns               ;
+; N/A                                     ; 61.08 MHz ( period = 16.371 ns )                    ; firslice:\gslices:1:ufirslice|x_int[13] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.202 ns               ;
+; N/A                                     ; 61.11 MHz ( period = 16.363 ns )                    ; firslice:\gslices:3:ufirslice|x_int[0]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.159 ns               ;
+; N/A                                     ; 61.13 MHz ( period = 16.359 ns )                    ; firslice:\gslices:0:ufirslice|x_int[5]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.159 ns               ;
+; N/A                                     ; 61.16 MHz ( period = 16.351 ns )                    ; firslice:\gslices:0:ufirslice|x_int[7]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.151 ns               ;
+; N/A                                     ; 61.18 MHz ( period = 16.346 ns )                    ; firslice:\gslices:2:ufirslice|x_int[1]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.139 ns               ;
+; N/A                                     ; 61.23 MHz ( period = 16.332 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.154 ns               ;
+; N/A                                     ; 61.28 MHz ( period = 16.318 ns )                    ; firslice:\gslices:1:ufirslice|x_int[14] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.149 ns               ;
+; N/A                                     ; 61.29 MHz ( period = 16.316 ns )                    ; firslice:\gslices:0:ufirslice|x_int[10] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.106 ns               ;
+; N/A                                     ; 61.32 MHz ( period = 16.309 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[8]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.109 ns               ;
+; N/A                                     ; 61.32 MHz ( period = 16.309 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.102 ns               ;
+; N/A                                     ; 61.34 MHz ( period = 16.303 ns )                    ; firslice:\gslices:4:ufirslice|x_int[5]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.098 ns               ;
+; N/A                                     ; 61.35 MHz ( period = 16.301 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.123 ns               ;
+; N/A                                     ; 61.35 MHz ( period = 16.300 ns )                    ; firslice:\gslices:1:ufirslice|x_int[13] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.131 ns               ;
+; N/A                                     ; 61.36 MHz ( period = 16.298 ns )                    ; firslice:\gslices:1:ufirslice|x_int[10] ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.090 ns               ;
+; N/A                                     ; 61.36 MHz ( period = 16.297 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.119 ns               ;
+; N/A                                     ; 61.38 MHz ( period = 16.292 ns )                    ; firslice:\gslices:3:ufirslice|x_int[0]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.088 ns               ;
+; N/A                                     ; 61.38 MHz ( period = 16.291 ns )                    ; firslice:\gslices:1:ufirslice|x_int[11] ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.083 ns               ;
+; N/A                                     ; 61.39 MHz ( period = 16.290 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.083 ns               ;
+; N/A                                     ; 61.46 MHz ( period = 16.271 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.063 ns               ;
+; N/A                                     ; 61.50 MHz ( period = 16.261 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.061 ns               ;
+; N/A                                     ; 61.52 MHz ( period = 16.256 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.078 ns               ;
+; N/A                                     ; 61.56 MHz ( period = 16.245 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.038 ns               ;
+; N/A                                     ; 61.56 MHz ( period = 16.245 ns )                    ; firslice:\gslices:0:ufirslice|x_int[10] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.035 ns               ;
+; N/A                                     ; 61.58 MHz ( period = 16.238 ns )                    ; firslice:\gslices:0:ufirslice|x_int[1]  ; y_out[7]~reg0  ; clk        ; clk      ; None                        ; None                      ; 16.038 ns               ;
+; N/A                                     ; 61.58 MHz ( period = 16.238 ns )                    ; firslice:\gslices:2:ufirslice|x_int[1]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.031 ns               ;
+; N/A                                     ; 61.60 MHz ( period = 16.235 ns )                    ; firslice:\gslices:4:ufirslice|x_int[4]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.032 ns               ;
+; N/A                                     ; 61.60 MHz ( period = 16.234 ns )                    ; firslice:\gslices:4:ufirslice|x_int[6]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.029 ns               ;
+; N/A                                     ; 61.61 MHz ( period = 16.232 ns )                    ; firslice:\gslices:4:ufirslice|x_int[5]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.027 ns               ;
+; N/A                                     ; 61.61 MHz ( period = 16.230 ns )                    ; firslice:\gslices:1:ufirslice|x_int[15] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.059 ns               ;
+; N/A                                     ; 61.65 MHz ( period = 16.221 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.043 ns               ;
+; N/A                                     ; 61.66 MHz ( period = 16.218 ns )                    ; firslice:\gslices:1:ufirslice|x_int[12] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.047 ns               ;
+; N/A                                     ; 61.74 MHz ( period = 16.198 ns )                    ; firslice:\gslices:1:ufirslice|x_int[0]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.991 ns               ;
+; N/A                                     ; 61.75 MHz ( period = 16.194 ns )                    ; firslice:\gslices:2:ufirslice|x_int[6]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 16.016 ns               ;
+; N/A                                     ; 61.79 MHz ( period = 16.185 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.978 ns               ;
+; N/A                                     ; 61.79 MHz ( period = 16.183 ns )                    ; firslice:\gslices:0:ufirslice|x_int[9]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.973 ns               ;
+; N/A                                     ; 61.80 MHz ( period = 16.181 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.977 ns               ;
+; N/A                                     ; 61.81 MHz ( period = 16.178 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.974 ns               ;
+; N/A                                     ; 61.83 MHz ( period = 16.174 ns )                    ; firslice:\gslices:0:ufirslice|x_int[10] ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.964 ns               ;
+; N/A                                     ; 61.84 MHz ( period = 16.171 ns )                    ; firslice:\gslices:0:ufirslice|x_int[14] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.991 ns               ;
+; N/A                                     ; 61.85 MHz ( period = 16.169 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.962 ns               ;
+; N/A                                     ; 61.85 MHz ( period = 16.167 ns )                    ; firslice:\gslices:1:ufirslice|x_int[8]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.959 ns               ;
+; N/A                                     ; 61.85 MHz ( period = 16.167 ns )                    ; firslice:\gslices:2:ufirslice|x_int[1]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.960 ns               ;
+; N/A                                     ; 61.87 MHz ( period = 16.162 ns )                    ; firslice:\gslices:1:ufirslice|x_int[14] ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.993 ns               ;
+; N/A                                     ; 61.89 MHz ( period = 16.158 ns )                    ; firslice:\gslices:0:ufirslice|x_int[4]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.958 ns               ;
+; N/A                                     ; 61.90 MHz ( period = 16.155 ns )                    ; firslice:\gslices:2:ufirslice|x_int[2]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.948 ns               ;
+; N/A                                     ; 61.92 MHz ( period = 16.150 ns )                    ; firslice:\gslices:0:ufirslice|x_int[6]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.950 ns               ;
+; N/A                                     ; 61.93 MHz ( period = 16.147 ns )                    ; firslice:\gslices:1:ufirslice|x_int[12] ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.976 ns               ;
+; N/A                                     ; 61.94 MHz ( period = 16.145 ns )                    ; firslice:\gslices:1:ufirslice|x_int[4]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.967 ns               ;
+; N/A                                     ; 61.94 MHz ( period = 16.144 ns )                    ; firslice:\gslices:1:ufirslice|x_int[13] ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.975 ns               ;
+; N/A                                     ; 61.95 MHz ( period = 16.142 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[8]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.964 ns               ;
+; N/A                                     ; 61.99 MHz ( period = 16.132 ns )                    ; firslice:\gslices:2:ufirslice|x_int[3]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.925 ns               ;
+; N/A                                     ; 61.99 MHz ( period = 16.131 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[8]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.924 ns               ;
+; N/A                                     ; 62.00 MHz ( period = 16.130 ns )                    ; firslice:\gslices:0:ufirslice|x_int[3]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.930 ns               ;
+; N/A                                     ; 62.00 MHz ( period = 16.130 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.926 ns               ;
+; N/A                                     ; 62.00 MHz ( period = 16.130 ns )                    ; firslice:\gslices:0:ufirslice|x_int[15] ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.950 ns               ;
+; N/A                                     ; 62.04 MHz ( period = 16.119 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.941 ns               ;
+; N/A                                     ; 62.07 MHz ( period = 16.110 ns )                    ; firslice:\gslices:1:ufirslice|x_int[7]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.932 ns               ;
+; N/A                                     ; 62.08 MHz ( period = 16.109 ns )                    ; firslice:\gslices:1:ufirslice|x_int[3]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.902 ns               ;
+; N/A                                     ; 62.09 MHz ( period = 16.105 ns )                    ; firslice:\gslices:3:ufirslice|x_int[3]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.901 ns               ;
+; N/A                                     ; 62.10 MHz ( period = 16.102 ns )                    ; firslice:\gslices:0:ufirslice|x_int[2]  ; y_out[8]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.902 ns               ;
+; N/A                                     ; 62.10 MHz ( period = 16.102 ns )                    ; firslice:\gslices:3:ufirslice|x_int[2]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.898 ns               ;
+; N/A                                     ; 62.11 MHz ( period = 16.100 ns )                    ; firslice:\gslices:0:ufirslice|x_int[11] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.890 ns               ;
+; N/A                                     ; 62.12 MHz ( period = 16.099 ns )                    ; firslice:\gslices:0:ufirslice|x_int[9]  ; y_out[13]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.889 ns               ;
+; N/A                                     ; 62.12 MHz ( period = 16.097 ns )                    ; firslice:\gslices:0:ufirslice|x_int[0]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.897 ns               ;
+; N/A                                     ; 62.13 MHz ( period = 16.096 ns )                    ; firslice:\gslices:2:ufirslice|x_int[1]  ; y_out[12]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.889 ns               ;
+; N/A                                     ; 62.17 MHz ( period = 16.086 ns )                    ; firslice:\gslices:2:ufirslice|x_int[6]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.908 ns               ;
+; N/A                                     ; 62.22 MHz ( period = 16.071 ns )                    ; firslice:\gslices:1:ufirslice|x_int[5]  ; y_out[7]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.893 ns               ;
+; N/A                                     ; 62.26 MHz ( period = 16.061 ns )                    ; firslice:\gslices:1:ufirslice|x_int[15] ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.890 ns               ;
+; N/A                                     ; 62.27 MHz ( period = 16.060 ns )                    ; firslice:\gslices:1:ufirslice|x_int[1]  ; y_out[7]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.853 ns               ;
+; N/A                                     ; 62.27 MHz ( period = 16.058 ns )                    ; firslice:\gslices:1:ufirslice|x_int[2]  ; y_out[9]~reg0  ; clk        ; clk      ; None                        ; None                      ; 15.851 ns               ;
+; N/A                                     ; 62.29 MHz ( period = 16.054 ns )                    ; firslice:\gslices:3:ufirslice|x_int[1]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.850 ns               ;
+; N/A                                     ; 62.29 MHz ( period = 16.054 ns )                    ; firslice:\gslices:4:ufirslice|x_int[4]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.851 ns               ;
+; N/A                                     ; 62.29 MHz ( period = 16.054 ns )                    ; firslice:\gslices:2:ufirslice|x_int[0]  ; y_out[15]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.847 ns               ;
+; N/A                                     ; 62.29 MHz ( period = 16.053 ns )                    ; firslice:\gslices:4:ufirslice|x_int[6]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.848 ns               ;
+; N/A                                     ; 62.32 MHz ( period = 16.047 ns )                    ; firslice:\gslices:2:ufirslice|x_int[2]  ; y_out[14]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.840 ns               ;
+; N/A                                     ; 62.32 MHz ( period = 16.046 ns )                    ; firslice:\gslices:0:ufirslice|x_int[8]  ; y_out[11]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.836 ns               ;
+; N/A                                     ; 62.33 MHz ( period = 16.043 ns )                    ; firslice:\gslices:1:ufirslice|x_int[6]  ; y_out[10]~reg0 ; clk        ; clk      ; None                        ; None                      ; 15.865 ns               ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                         ;                ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------------------+----------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; tsu                                                                                               ;
++-------+--------------+------------+----------+-----------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From     ; To                                      ; To Clock ;
++-------+--------------+------------+----------+-----------------------------------------+----------+
+; N/A   ; None         ; 4.114 ns   ; x_in[14] ; firslice:\gslices:0:ufirslice|x_int[14] ; clk      ;
+; N/A   ; None         ; 4.103 ns   ; x_in[6]  ; firslice:\gslices:0:ufirslice|x_int[6]  ; clk      ;
+; N/A   ; None         ; 4.064 ns   ; x_in[11] ; firslice:\gslices:0:ufirslice|x_int[11] ; clk      ;
+; N/A   ; None         ; 4.047 ns   ; x_in[15] ; firslice:\gslices:0:ufirslice|x_int[15] ; clk      ;
+; N/A   ; None         ; 4.006 ns   ; x_in[8]  ; firslice:\gslices:0:ufirslice|x_int[8]  ; clk      ;
+; N/A   ; None         ; 4.005 ns   ; x_in[10] ; firslice:\gslices:0:ufirslice|x_int[10] ; clk      ;
+; N/A   ; None         ; 3.902 ns   ; x_in[1]  ; firslice:\gslices:0:ufirslice|x_int[1]  ; clk      ;
+; N/A   ; None         ; 3.785 ns   ; x_in[9]  ; firslice:\gslices:0:ufirslice|x_int[9]  ; clk      ;
+; N/A   ; None         ; 3.700 ns   ; x_in[0]  ; firslice:\gslices:0:ufirslice|x_int[0]  ; clk      ;
+; N/A   ; None         ; 3.637 ns   ; x_in[3]  ; firslice:\gslices:0:ufirslice|x_int[3]  ; clk      ;
+; N/A   ; None         ; 3.544 ns   ; x_in[13] ; firslice:\gslices:0:ufirslice|x_int[13] ; clk      ;
+; N/A   ; None         ; 3.542 ns   ; x_in[2]  ; firslice:\gslices:0:ufirslice|x_int[2]  ; clk      ;
+; N/A   ; None         ; 3.530 ns   ; x_in[12] ; firslice:\gslices:0:ufirslice|x_int[12] ; clk      ;
+; N/A   ; None         ; 3.412 ns   ; x_in[5]  ; firslice:\gslices:0:ufirslice|x_int[5]  ; clk      ;
+; N/A   ; None         ; 0.347 ns   ; x_in[4]  ; firslice:\gslices:0:ufirslice|x_int[4]  ; clk      ;
+; N/A   ; None         ; 0.168 ns   ; x_in[7]  ; firslice:\gslices:0:ufirslice|x_int[7]  ; clk      ;
++-------+--------------+------------+----------+-----------------------------------------+----------+
+
+
++-----------------------------------------------------------------------------+
+; tco                                                                         ;
++-------+--------------+------------+----------------+-----------+------------+
+; Slack ; Required tco ; Actual tco ; From           ; To        ; From Clock ;
++-------+--------------+------------+----------------+-----------+------------+
+; N/A   ; None         ; 8.301 ns   ; y_out[15]~reg0 ; y_out[15] ; clk        ;
+; N/A   ; None         ; 8.293 ns   ; y_out[14]~reg0 ; y_out[14] ; clk        ;
+; N/A   ; None         ; 8.147 ns   ; y_out[0]~reg0  ; y_out[0]  ; clk        ;
+; N/A   ; None         ; 8.109 ns   ; y_out[11]~reg0 ; y_out[11] ; clk        ;
+; N/A   ; None         ; 8.079 ns   ; y_out[12]~reg0 ; y_out[12] ; clk        ;
+; N/A   ; None         ; 8.009 ns   ; y_out[2]~reg0  ; y_out[2]  ; clk        ;
+; N/A   ; None         ; 8.007 ns   ; y_out[3]~reg0  ; y_out[3]  ; clk        ;
+; N/A   ; None         ; 7.940 ns   ; y_out[9]~reg0  ; y_out[9]  ; clk        ;
+; N/A   ; None         ; 7.928 ns   ; y_out[6]~reg0  ; y_out[6]  ; clk        ;
+; N/A   ; None         ; 7.790 ns   ; y_out[1]~reg0  ; y_out[1]  ; clk        ;
+; N/A   ; None         ; 7.785 ns   ; y_out[4]~reg0  ; y_out[4]  ; clk        ;
+; N/A   ; None         ; 7.765 ns   ; y_out[5]~reg0  ; y_out[5]  ; clk        ;
+; N/A   ; None         ; 7.709 ns   ; y_out[10]~reg0 ; y_out[10] ; clk        ;
+; N/A   ; None         ; 7.584 ns   ; y_out[8]~reg0  ; y_out[8]  ; clk        ;
+; N/A   ; None         ; 7.563 ns   ; y_out[7]~reg0  ; y_out[7]  ; clk        ;
+; N/A   ; None         ; 7.273 ns   ; y_out[13]~reg0 ; y_out[13] ; clk        ;
++-------+--------------+------------+----------------+-----------+------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; th                                                                                                      ;
++---------------+-------------+-----------+----------+-----------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From     ; To                                      ; To Clock ;
++---------------+-------------+-----------+----------+-----------------------------------------+----------+
+; N/A           ; None        ; 0.062 ns  ; x_in[7]  ; firslice:\gslices:0:ufirslice|x_int[7]  ; clk      ;
+; N/A           ; None        ; -0.117 ns ; x_in[4]  ; firslice:\gslices:0:ufirslice|x_int[4]  ; clk      ;
+; N/A           ; None        ; -3.182 ns ; x_in[5]  ; firslice:\gslices:0:ufirslice|x_int[5]  ; clk      ;
+; N/A           ; None        ; -3.300 ns ; x_in[12] ; firslice:\gslices:0:ufirslice|x_int[12] ; clk      ;
+; N/A           ; None        ; -3.312 ns ; x_in[2]  ; firslice:\gslices:0:ufirslice|x_int[2]  ; clk      ;
+; N/A           ; None        ; -3.314 ns ; x_in[13] ; firslice:\gslices:0:ufirslice|x_int[13] ; clk      ;
+; N/A           ; None        ; -3.407 ns ; x_in[3]  ; firslice:\gslices:0:ufirslice|x_int[3]  ; clk      ;
+; N/A           ; None        ; -3.470 ns ; x_in[0]  ; firslice:\gslices:0:ufirslice|x_int[0]  ; clk      ;
+; N/A           ; None        ; -3.555 ns ; x_in[9]  ; firslice:\gslices:0:ufirslice|x_int[9]  ; clk      ;
+; N/A           ; None        ; -3.672 ns ; x_in[1]  ; firslice:\gslices:0:ufirslice|x_int[1]  ; clk      ;
+; N/A           ; None        ; -3.775 ns ; x_in[10] ; firslice:\gslices:0:ufirslice|x_int[10] ; clk      ;
+; N/A           ; None        ; -3.776 ns ; x_in[8]  ; firslice:\gslices:0:ufirslice|x_int[8]  ; clk      ;
+; N/A           ; None        ; -3.817 ns ; x_in[15] ; firslice:\gslices:0:ufirslice|x_int[15] ; clk      ;
+; N/A           ; None        ; -3.834 ns ; x_in[11] ; firslice:\gslices:0:ufirslice|x_int[11] ; clk      ;
+; N/A           ; None        ; -3.873 ns ; x_in[6]  ; firslice:\gslices:0:ufirslice|x_int[6]  ; clk      ;
+; N/A           ; None        ; -3.884 ns ; x_in[14] ; firslice:\gslices:0:ufirslice|x_int[14] ; clk      ;
++---------------+-------------+-----------+----------+-----------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Fri Nov 27 10:03:57 2015
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off fir -c fir --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clk" is an undefined clock
+Info: Clock "clk" has Internal fmax of 57.05 MHz between source register "firslice:\gslices:0:ufirslice|x_int[1]" and destination register "y_out[15]~reg0" (period= 17.53 ns)
+    Info: + Longest register to register delay is 17.330 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X58_Y27_N31; Fanout = 13; REG Node = 'firslice:\gslices:0:ufirslice|x_int[1]'
+        Info: 2: + IC(0.751 ns) + CELL(0.420 ns) = 1.171 ns; Loc. = LCCOMB_X58_Y27_N28; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|romout[0][12]~909'
+        Info: 3: + IC(0.672 ns) + CELL(0.393 ns) = 2.236 ns; Loc. = LCCOMB_X58_Y27_N4; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_25h:auto_generated|op_1~5'
+        Info: 4: + IC(0.000 ns) + CELL(0.071 ns) = 2.307 ns; Loc. = LCCOMB_X58_Y27_N6; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_25h:auto_generated|op_1~7'
+        Info: 5: + IC(0.000 ns) + CELL(0.071 ns) = 2.378 ns; Loc. = LCCOMB_X58_Y27_N8; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_25h:auto_generated|op_1~9'
+        Info: 6: + IC(0.000 ns) + CELL(0.410 ns) = 2.788 ns; Loc. = LCCOMB_X58_Y27_N10; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_25h:auto_generated|op_1~10'
+        Info: 7: + IC(1.003 ns) + CELL(0.414 ns) = 4.205 ns; Loc. = LCCOMB_X58_Y24_N18; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~3'
+        Info: 8: + IC(0.000 ns) + CELL(0.071 ns) = 4.276 ns; Loc. = LCCOMB_X58_Y24_N20; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~5'
+        Info: 9: + IC(0.000 ns) + CELL(0.071 ns) = 4.347 ns; Loc. = LCCOMB_X58_Y24_N22; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~7'
+        Info: 10: + IC(0.000 ns) + CELL(0.071 ns) = 4.418 ns; Loc. = LCCOMB_X58_Y24_N24; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~9'
+        Info: 11: + IC(0.000 ns) + CELL(0.071 ns) = 4.489 ns; Loc. = LCCOMB_X58_Y24_N26; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~11'
+        Info: 12: + IC(0.000 ns) + CELL(0.071 ns) = 4.560 ns; Loc. = LCCOMB_X58_Y24_N28; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~13'
+        Info: 13: + IC(0.000 ns) + CELL(0.410 ns) = 4.970 ns; Loc. = LCCOMB_X58_Y24_N30; Fanout = 2; COMB Node = 'firslice:\gslices:0:ufirslice|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_0gh:auto_generated|op_1~14'
+        Info: 14: + IC(1.204 ns) + CELL(0.393 ns) = 6.567 ns; Loc. = LCCOMB_X59_Y23_N4; Fanout = 2; COMB Node = 'firslice:\gslices:1:ufirslice|Add0~31'
+        Info: 15: + IC(0.000 ns) + CELL(0.410 ns) = 6.977 ns; Loc. = LCCOMB_X59_Y23_N6; Fanout = 2; COMB Node = 'firslice:\gslices:1:ufirslice|Add0~32'
+        Info: 16: + IC(0.749 ns) + CELL(0.414 ns) = 8.140 ns; Loc. = LCCOMB_X59_Y21_N6; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~35'
+        Info: 17: + IC(0.000 ns) + CELL(0.071 ns) = 8.211 ns; Loc. = LCCOMB_X59_Y21_N8; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~37'
+        Info: 18: + IC(0.000 ns) + CELL(0.071 ns) = 8.282 ns; Loc. = LCCOMB_X59_Y21_N10; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~39'
+        Info: 19: + IC(0.000 ns) + CELL(0.071 ns) = 8.353 ns; Loc. = LCCOMB_X59_Y21_N12; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~41'
+        Info: 20: + IC(0.000 ns) + CELL(0.159 ns) = 8.512 ns; Loc. = LCCOMB_X59_Y21_N14; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~43'
+        Info: 21: + IC(0.000 ns) + CELL(0.410 ns) = 8.922 ns; Loc. = LCCOMB_X59_Y21_N16; Fanout = 2; COMB Node = 'firslice:\gslices:2:ufirslice|Add0~44'
+        Info: 22: + IC(0.456 ns) + CELL(0.414 ns) = 9.792 ns; Loc. = LCCOMB_X58_Y21_N16; Fanout = 2; COMB Node = 'firslice:\gslices:4:ufirslice|Add0~45'
+        Info: 23: + IC(0.000 ns) + CELL(0.410 ns) = 10.202 ns; Loc. = LCCOMB_X58_Y21_N18; Fanout = 2; COMB Node = 'firslice:\gslices:4:ufirslice|Add0~46'
+        Info: 24: + IC(0.979 ns) + CELL(0.414 ns) = 11.595 ns; Loc. = LCCOMB_X54_Y20_N18; Fanout = 2; COMB Node = 'firslice:\gslices:6:ufirslice|Add0~47'
+        Info: 25: + IC(0.000 ns) + CELL(0.410 ns) = 12.005 ns; Loc. = LCCOMB_X54_Y20_N20; Fanout = 2; COMB Node = 'firslice:\gslices:6:ufirslice|Add0~48'
+        Info: 26: + IC(0.441 ns) + CELL(0.393 ns) = 12.839 ns; Loc. = LCCOMB_X53_Y20_N20; Fanout = 2; COMB Node = 'firslice:\gslices:8:ufirslice|Add0~49'
+        Info: 27: + IC(0.000 ns) + CELL(0.410 ns) = 13.249 ns; Loc. = LCCOMB_X53_Y20_N22; Fanout = 2; COMB Node = 'firslice:\gslices:8:ufirslice|Add0~50'
+        Info: 28: + IC(0.669 ns) + CELL(0.393 ns) = 14.311 ns; Loc. = LCCOMB_X52_Y20_N22; Fanout = 2; COMB Node = 'firslice:\gslices:10:ufirslice|Add0~51'
+        Info: 29: + IC(0.000 ns) + CELL(0.410 ns) = 14.721 ns; Loc. = LCCOMB_X52_Y20_N24; Fanout = 2; COMB Node = 'firslice:\gslices:10:ufirslice|Add0~52'
+        Info: 30: + IC(0.442 ns) + CELL(0.393 ns) = 15.556 ns; Loc. = LCCOMB_X51_Y20_N24; Fanout = 2; COMB Node = 'firslice:\gslices:14:ufirslice|Add0~53'
+        Info: 31: + IC(0.000 ns) + CELL(0.410 ns) = 15.966 ns; Loc. = LCCOMB_X51_Y20_N26; Fanout = 2; COMB Node = 'firslice:\gslices:14:ufirslice|Add0~54'
+        Info: 32: + IC(0.456 ns) + CELL(0.414 ns) = 16.836 ns; Loc. = LCCOMB_X50_Y20_N26; Fanout = 1; COMB Node = 'y_out[14]~71'
+        Info: 33: + IC(0.000 ns) + CELL(0.410 ns) = 17.246 ns; Loc. = LCCOMB_X50_Y20_N28; Fanout = 1; COMB Node = 'y_out[15]~72'
+        Info: 34: + IC(0.000 ns) + CELL(0.084 ns) = 17.330 ns; Loc. = LCFF_X50_Y20_N29; Fanout = 1; REG Node = 'y_out[15]~reg0'
+        Info: Total cell delay = 9.508 ns ( 54.86 % )
+        Info: Total interconnect delay = 7.822 ns ( 45.14 % )
+    Info: - Smallest clock skew is 0.014 ns
+        Info: + Shortest clock path from clock "clk" to destination register is 2.791 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.117 ns) + CELL(0.000 ns) = 1.106 ns; Loc. = CLKCTRL_G3; Fanout = 288; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.148 ns) + CELL(0.537 ns) = 2.791 ns; Loc. = LCFF_X50_Y20_N29; Fanout = 1; REG Node = 'y_out[15]~reg0'
+            Info: Total cell delay = 1.526 ns ( 54.68 % )
+            Info: Total interconnect delay = 1.265 ns ( 45.32 % )
+        Info: - Longest clock path from clock "clk" to source register is 2.777 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.117 ns) + CELL(0.000 ns) = 1.106 ns; Loc. = CLKCTRL_G3; Fanout = 288; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.134 ns) + CELL(0.537 ns) = 2.777 ns; Loc. = LCFF_X58_Y27_N31; Fanout = 13; REG Node = 'firslice:\gslices:0:ufirslice|x_int[1]'
+            Info: Total cell delay = 1.526 ns ( 54.95 % )
+            Info: Total interconnect delay = 1.251 ns ( 45.05 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: tsu for register "firslice:\gslices:0:ufirslice|x_int[14]" (data pin = "x_in[14]", clock pin = "clk") is 4.114 ns
+    Info: + Longest pin to register delay is 6.907 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.830 ns) = 0.830 ns; Loc. = PIN_J17; Fanout = 1; PIN Node = 'x_in[14]'
+        Info: 2: + IC(5.711 ns) + CELL(0.366 ns) = 6.907 ns; Loc. = LCFF_X62_Y24_N3; Fanout = 11; REG Node = 'firslice:\gslices:0:ufirslice|x_int[14]'
+        Info: Total cell delay = 1.196 ns ( 17.32 % )
+        Info: Total interconnect delay = 5.711 ns ( 82.68 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "clk" to destination register is 2.757 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.117 ns) + CELL(0.000 ns) = 1.106 ns; Loc. = CLKCTRL_G3; Fanout = 288; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.114 ns) + CELL(0.537 ns) = 2.757 ns; Loc. = LCFF_X62_Y24_N3; Fanout = 11; REG Node = 'firslice:\gslices:0:ufirslice|x_int[14]'
+        Info: Total cell delay = 1.526 ns ( 55.35 % )
+        Info: Total interconnect delay = 1.231 ns ( 44.65 % )
+Info: tco from clock "clk" to destination pin "y_out[15]" through register "y_out[15]~reg0" is 8.301 ns
+    Info: + Longest clock path from clock "clk" to source register is 2.791 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.117 ns) + CELL(0.000 ns) = 1.106 ns; Loc. = CLKCTRL_G3; Fanout = 288; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.148 ns) + CELL(0.537 ns) = 2.791 ns; Loc. = LCFF_X50_Y20_N29; Fanout = 1; REG Node = 'y_out[15]~reg0'
+        Info: Total cell delay = 1.526 ns ( 54.68 % )
+        Info: Total interconnect delay = 1.265 ns ( 45.32 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 5.260 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X50_Y20_N29; Fanout = 1; REG Node = 'y_out[15]~reg0'
+        Info: 2: + IC(2.618 ns) + CELL(2.642 ns) = 5.260 ns; Loc. = PIN_R25; Fanout = 0; PIN Node = 'y_out[15]'
+        Info: Total cell delay = 2.642 ns ( 50.23 % )
+        Info: Total interconnect delay = 2.618 ns ( 49.77 % )
+Info: th for register "firslice:\gslices:0:ufirslice|x_int[7]" (data pin = "x_in[7]", clock pin = "clk") is 0.062 ns
+    Info: + Longest clock path from clock "clk" to destination register is 2.777 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_P2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.117 ns) + CELL(0.000 ns) = 1.106 ns; Loc. = CLKCTRL_G3; Fanout = 288; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.134 ns) + CELL(0.537 ns) = 2.777 ns; Loc. = LCFF_X57_Y27_N17; Fanout = 11; REG Node = 'firslice:\gslices:0:ufirslice|x_int[7]'
+        Info: Total cell delay = 1.526 ns ( 54.95 % )
+        Info: Total interconnect delay = 1.251 ns ( 45.05 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 2.981 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_C13; Fanout = 1; PIN Node = 'x_in[7]'
+        Info: 2: + IC(1.769 ns) + CELL(0.149 ns) = 2.897 ns; Loc. = LCCOMB_X57_Y27_N16; Fanout = 1; COMB Node = 'firslice:\gslices:0:ufirslice|x_int[7]~feeder'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 2.981 ns; Loc. = LCFF_X57_Y27_N17; Fanout = 11; REG Node = 'firslice:\gslices:0:ufirslice|x_int[7]'
+        Info: Total cell delay = 1.212 ns ( 40.66 % )
+        Info: Total interconnect delay = 1.769 ns ( 59.34 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 222 megabytes
+    Info: Processing ended: Fri Nov 27 10:03:58 2015
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Dec 10 19:11:54 2015
+Quartus II Version : 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition
+Revision Name : fir
+Top-level Entity Name : fir
+Family : Cyclone II
+Device : EP2C50F672C6
+Timing Models : Final
+Total logic elements : 2,133 / 50,528 ( 4 % )
+    Total combinational functions : 2,008 / 50,528 ( 4 % )
+    Dedicated logic registers : 288 / 50,528 ( < 1 % )
+Total registers : 288
+Total pins : 33 / 450 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 0 / 594,432 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 172 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
