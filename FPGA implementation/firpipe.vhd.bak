@@ -1,0 +1,138 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+use ieee.std_logic_arith.all;
+
+entity fir is
+  
+  port (
+    clk  : in std_logic;
+    x_in : in std_logic_vector(15 downto 0);
+    y_out : out std_logic_vector(15 downto 0));
+
+end fir;
+
+architecture str of fir is
+
+  component firslice
+    port (
+      clk   : in  std_logic;
+      x_in  : in  std_logic_vector(15 downto 0);
+      a_in  : in  std_logic_vector(12 downto 0);
+      d_in  : in  std_logic_vector(32 downto 0);
+      x_out : out std_logic_vector(15 downto 0);
+      d_out : out std_logic_vector(32 downto 0));
+  end component;
+
+component reg16 
+	GENERIC(N:	INTEGER:=16);
+	PORT(	D 		:IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+		rst,clear,clk	:IN STD_LOGIC;
+		Q		:OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+END component;
+  type rom is array (0 to 16) of integer;
+  constant coeff : rom := (-282,
+                           -369,
+                           -307,
+                           -67,
+                           326,
+                           803,
+                           1259,
+                           1587,
+                           1706,
+                           1587,
+                           1259,
+                           803,
+                           326,
+                           -67,
+                           -307,
+                           -369,
+                           -282
+                           );
+
+  type delays is array (0 to 21) of std_logic_vector(15 downto 0);
+  signal xdly : delays;
+  type addinputs is array (0 to 21) of std_logic_vector(32 downto 0);
+  signal addin : addinputs;
+  type rom_std is array (0 to 21) of std_logic_vector(12 downto 0);
+  signal a_in : rom_std;
+begin  -- str
+
+  xdly(0) <= x_in;
+  addin(0) <= (others => '0');
+
+  gslices1: for i in 0 to 3 generate
+    a_in(i) <= conv_std_logic_vector(coeff(i),13);
+    ufirslice: firslice
+      port map (
+        clk   => clk,
+        x_in  => xdly(i),
+        a_in  => a_in(i),
+        d_in  => addin(i),
+        x_out => xdly(i+1),
+        d_out => addin(i+1));
+  end generate gslices1;
+
+  u_pipeline_reg00: reg16 generic map(16) port map(D=>xdly(4),Q=>xdly(5),rst => '0',clear =>'0', clk =>clk);
+  u_pipeline_reg01: reg16 generic map(33) port map(D=>addin(4),Q=>addin(5),rst => '0',clear =>'0', clk =>clk);
+  gslices2: for i in 5 to 8 generate
+    a_in(i) <= conv_std_logic_vector(coeff(i),13);
+    ufirslice2: firslice
+      port map (
+        clk   => clk,
+        x_in  => xdly(i),
+        a_in  => a_in(i),
+        d_in  => addin(i),
+        x_out => xdly(i+1),
+        d_out => addin(i+1));
+  end generate gslices2;
+  u_pipeline_reg10: reg16 generic map(16) port map(D=>xdly(9),Q=>xdly(10),rst => '0',clear =>'0', clk =>clk);
+  u_pipeline_reg11: reg16 generic map(33) port map(D=>addin(9),Q=>addin(10),rst => '0',clear =>'0', clk =>clk);
+ gslices3: for i in 10 to 12 generate
+    a_in(i) <= conv_std_logic_vector(coeff(i),13);
+    ufirslice3: firslice
+      port map (
+        clk   => clk,
+        x_in  => xdly(i),
+        a_in  => a_in(i),
+        d_in  => addin(i),
+        x_out => xdly(i+1),
+        d_out => addin(i+1));
+  end generate gslices3;
+  u_pipeline_reg20: reg16 generic map(16) port map(D=>xdly(13),Q=>xdly(14),rst => '0',clear =>'0', clk =>clk);
+  u_pipeline_reg21: reg16 generic map(33) port map(D=>addin(13),Q=>addin(14),rst => '0',clear =>'0', clk =>clk);
+ gslices4: for i in 14 to 16 generate
+    a_in(i) <= conv_std_logic_vector(coeff(i),13);
+    ufirslice4: firslice
+      port map (
+        clk   => clk,
+        x_in  => xdly(i),
+        a_in  => a_in(i),
+        d_in  => addin(i),
+        x_out => xdly(i+1),
+        d_out => addin(i+1));
+  end generate gslices4;
+  u_pipeline_reg30: reg16 generic map(16) port map(D=>xdly(17),Q=>xdly(18),rst => '0',clear =>'0', clk =>clk);
+  u_pipeline_reg31: reg16 generic map(33) port map(D=>addin(17),Q=>addin(18),rst => '0',clear =>'0', clk =>clk);
+ gslices5: for i in 18 to 20 generate
+    a_in(i) <= conv_std_logic_vector(coeff(i),13);
+    ufirslice5: firslice
+      port map (
+        clk   => clk,
+        x_in  => xdly(i),
+        a_in  => a_in(i),
+        d_in  => addin(i),
+        x_out => xdly(i+1),
+        d_out => addin(i+1));
+  end generate gslices5;
+
+
+  -- output register
+  p1: process (clk)
+  begin  -- process pout
+    if clk'event and clk = '1' then  -- rising clock edge
+      y_out <= addin(21)(28 downto 13);
+    end if;
+  end process p1;
+  
+end str;
